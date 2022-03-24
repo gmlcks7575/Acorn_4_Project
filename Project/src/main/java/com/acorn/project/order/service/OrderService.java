@@ -13,9 +13,9 @@ import com.acorn.project.product.dto.StockBuyDto;
 
 public interface OrderService {
 
-	public void orderInfo(OrderDto dto, HttpSession session);
+	public void orderInfo(OrderDto dto);
 	
-	public void orderInfo_Detail(OrderDto dto, OrderDetailDto dtoDetail, HttpSession session);
+	public void orderInfo_Detail(OrderDetailDto dtoDetail);
 	
 	public List<OrderDto> getListOrder(OrderDto dto);
 	

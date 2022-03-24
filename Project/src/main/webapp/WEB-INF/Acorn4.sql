@@ -96,23 +96,29 @@ CREATE sequence ordernumber_seq;
 */
 CREATE TABLE ordertable(	
 	orderId NUMBER(35),
-	userId varchar2(100),
+	userId varchar2(50),
+	receiver varchar2(50)
 	userAddr varchar2(100),
-	userPostal varchar2(100),
+	userPostal varchar2(20),
 	userAddrDetail varchar2(100),
-	tel NUMBER(20),
+	tel varchar2(50),
 	totalPrice NUMBER(20),
-	orderDate Date
+	orderDate Date,
+	delivery varchar2(50),
+	primary key(orderId)
 );
 
 CREATE SEQUENCE orderId_seq;
 
 CREATE TABLE ordertable_detail(	
 	orderId NUMBER(35),
-	orderId_detail NUMBER (35),
+	userId varchar2(50),
+	orderId_detail NUMBER,
 	productId varchar2(100),
-	amount_detail NUMBER(20)
-);
+	amount_detail NUMBER,
+	
+	FOREIGN KEY (orderId) REFERENCES ordertable(orderId)
+);d
 
 CREATE SEQUENCE orderId_detail_seq;
 

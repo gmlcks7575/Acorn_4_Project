@@ -40,24 +40,20 @@ public class OrderController {
 	@RequestMapping("/private/orderComplete.do")
 	public String Order(HttpSession session, OrderDto dto,  OrderDetailDto dtoDetail, CartDto sbdto) throws Exception{
 		
-		
-		Oservice.orderInfo(dto, session);
+		String id=(String)session.getAttribute("id");
+		dto.setUserId(id);
+		dtoDetail.setUserId(id);
+		Oservice.orderInfo(dto);
 
-		Oservice.orderInfo_Detail(dto, dtoDetail, session);
+		Thread.sleep(1000);
+		//dtoDetail.setOrderId(dto.getOrderId());
 		
-		Thread.sleep(5000);
+		Oservice.orderInfo_Detail(dtoDetail);
 		
-		List<OrderListDto> orderList = Oservice.AllOrderDetailList(dto);
-		ProductDto bdto = new ProductDto();
 		
-		for(OrderListDto i : orderList) {
-			bdto.setProductId(i.getProductId());
-			bdto.setStock(i.getAmount_detail());
-			Oservice.stockIncrease(bdto);
-			Oservice.buyCountDown(bdto);
-		}
 		
-		service.deleteAll((String)session.getAttribute("id"));
+		
+		service.deleteAll(id);
 		
 		return "staff/orderComplete";
 	}
