@@ -18,7 +18,7 @@
 <a href="https://github.com/Kyeong-Ah">김경아👧</a> <strong><code>Users</code></strong> <strong><code>Cart</code></strong> <strong><code>DB</code></strong>
   <strong><code>Comment</code></strong>
 <br/><br/>
-<a href="https://github.com/gmlcks7575">김희찬👦</a> <strong><code>Administrator Page</code></strong> <strong><code>Thisweekorder</code></strong> <strong><code>DB</code></strong> <strong><code>Order</code></strong>
+<a href="https://github.com/gmlcks7575">김희찬👦</a> <strong><code>Administrator Page</code></strong> <strong><code>Order Page</code></strong> <strong><code>Side Bar</code></strong> <strong><code>Nav Bar</code></strong> <strong><code>Thisweekorder</code></strong> <strong><code>DB</code></strong>
 <br/><br/>
 <a href="https://github.com/leegyuseung">이규승👦</a> <strong><code>Product</code></strong> <strong><code>Detail</code></strong> <strong><code>DB</code></strong> <strong><code>CSS</code></strong> <strong><code>Error Search</code></strong>
 <br/><br/>
