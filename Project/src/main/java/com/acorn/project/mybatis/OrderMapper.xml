@@ -5,7 +5,7 @@
 	<insert id="getInfo" parameterType="orderDto">
 		INSERT INTO ordertable
 		(orderId, receiver, userId, userAddr, userPostal, userAddrDetail, tel, totalPrice, orderDate)
-	 	values(orderId_seq.nextval, #{receiver}, #{userId}, #{userAddr}, #{userPostal}, #{userAddrDetail}, #{tel}, #{totalPrice}, SYSDATE + 1)
+	 	values(orderId_seq.nextval, #{receiver}, #{userId}, #{userAddr}, #{userPostal}, #{userAddrDetail}, #{tel}, #{totalPrice}, SYSDATE)
 	</insert>
 	
 	<insert id="getInfo_Detail" parameterType="cartDto" >

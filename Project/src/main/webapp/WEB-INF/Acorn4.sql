@@ -19,6 +19,7 @@ CREATE TABLE product(
 	regDate DATE, /* 상품 등록일 */
 	updateDate DATE, /* 상품 정보 업데이트일 */
 	buyCount NUMBER(10) /*인기 품목 선정을 위해*/
+	imagepath varchar2(100)
 );
 
 
@@ -28,7 +29,9 @@ CREATE TABLE cart(
 	productId VARCHAR2(100), /* 상품 id */
 	price NUMBER(10),
 	amount NUMBER default 0 /* 상품 수량 */
-)
+	imagepath varchar2(100) /*image*/
+	totalPrice number
+);
 
 ALTER TABLE cart ADD CONSTRAINT cart_fk_id FOREIGN KEY (id) REFERENCES users(id)
 ALTER TABLE cart ADD CONSTRAINT cart_fk_productId FOREIGN KEY (productId) REFERENCES product(productId)
@@ -96,13 +99,15 @@ CREATE sequence ordernumber_seq;
 */
 CREATE TABLE ordertable(	
 	orderId NUMBER(35),
+	receiver varchar2(50),
 	userId varchar2(100),
 	userAddr varchar2(100),
 	userPostal varchar2(100),
 	userAddrDetail varchar2(100),
-	tel NUMBER(20),
+	tel varchar2(50),
 	totalPrice NUMBER(20),
-	orderDate Date
+	orderDate Date,
+	delivery varchar2(50)
 );
 
 CREATE SEQUENCE orderId_seq;
@@ -111,7 +116,8 @@ CREATE TABLE ordertable_detail(
 	orderId NUMBER(35),
 	orderId_detail NUMBER (35),
 	productId varchar2(100),
-	amount_detail NUMBER(20)
+	amount_detail NUMBER(20),
+	userId varchar2(50)
 );
 
 CREATE SEQUENCE orderId_detail_seq;
@@ -121,3 +127,14 @@ CREATE SEQUENCE orderId_detail_seq;
 SELECT *
 FROM ordertable
 where orderdate between TRUNC(SYSDATE -7, 'iw') and TRUNC(SYSDATE, 'dy');
+
+/*이번주 주문내역 조회*/
+SELECT *
+FROM ordertable
+WHERE orderdate BETWEEN TRUNC(SYSDATE, 'iw') AND TRUNC(SYSDATE + 7, 'day') + 1
+
+/*밀키트 세부 내용*/
+CREATE TABLE content(
+	productId2 VARCHAR2(100) PRIMARY KEY, 
+	title VARCHAR2(200), 
+	content varchar2(200));
